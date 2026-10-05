@@ -192,23 +192,3 @@ relative layout of the OSMI repository is kept so its `addpath` calls resolve.
 `notebooks/01_preprocesamiento.ipynb` and `01b_preprocesamiento_target_target.ipynb`
 turn the two raw databases into the four 6×12 datasets.
 
-## Known limitations
-
-- **Hard-coded paths.** These files point to folders of the original machine and
-  need editing: `notebooks/*.ipynb`, `evaluation/eval_traditional_calibration_v2.py`
-  (imported by `eval_traditional_calibration_8010.py`) and
-  `figures/draw_*_architecture.py`. Point the raw databases to `data/raw/`.
-- **Not included.**
-  - `Ep_healthy.mat`, the simulated healthy-background field used by the traditional
-    calibration. The script that writes it is not in the repository.
-  - `positions/target_intersections.csv`, needed by notebook 01b to build the monitoring pairs.
-  - The Mini-Circuits switch library (`C:\Image_to_Image\mcl_SolidStateSwitch_NET45.dll`
-    in the acquisition scripts): vendor software, lab Windows PC.
-  - The trained checkpoints and the run logs (see `.gitignore`).
-- **Lab-specific files.** `Robot_Acquisition/config/robot_config.mat` is the `step1`
-  output for the lab setup (serial port, steps per mm) and has to be regenerated
-  on another machine. `valid_positions.mat` is the copy that sat next to the
-  acquisition scripts; a different, newer one exists elsewhere in the original folders.
-- **File sizes.** The two monitoring datasets (159 and 164 MB) exceed GitHub's
-  100 MB per-file limit, and the raw robot database (68 MB) triggers its 50 MB
-  warning. Use Git LFS (`git lfs track "*.h5"`) or host the data externally.
